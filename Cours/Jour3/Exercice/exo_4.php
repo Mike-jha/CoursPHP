@@ -1,6 +1,6 @@
 <?php
     /*
-        1. Dans le fichier `functions.php`, créez une nouvelle fonction :
+        1. Dans le fichier `function.php`, créez une nouvelle fonction :
         `getListMenu` qui renverra une liste ul > li, dont chacun des éléments
         sera contenu dans un tableau passé en paramètre.
 
@@ -17,18 +17,29 @@
                 vers chacune des pages
      */
     $items = [
-        'Accueil',
-        'Contact',
-        'Portfolio',
+        'Accueil' => '/accueil.php',
+        'Contact' => '/contact.php',
+        'Portfolio' => '/portfolio.php',
     ];
 
-    // $items ['Accueil' => '/accueil.php'] ...
+    function getListMenu($items) {
+        foreach ($items as $key => $link) {
+            if ('/accueil.php' == $link) {
+                continue; 
+            }
+            
+            echo '<li><a href="'.$link.'">'.$key.'</a></li>';
+        
+            if ('Portfolio' == $key) {
+                break;
+            }
+        }
+    }
+
+    
 ?>
 <nav>
+    <ul>
     <?php echo getListMenu($items); ?>
-    <!-- <ul>
-        <li><a href="">Accueil</a></li>
-        <li>Contact</li>
-
-    </ul> -->
+    </ul>
 </nav>

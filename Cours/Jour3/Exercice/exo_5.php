@@ -23,7 +23,31 @@ in_array($tags, ['p', 'div'])
 Retourne vrai si $tags est dans un élément du tableau
 
 */
+$elements = ['poissons', 'oiseaux', 'dinosaures'];
+
+function elementsInCustomTags($elements): string {
+    foreach ($elements as $animals) {
+        return trim($animals);
+    }
+ 
+    echo '<p>'.$animals.'</p><br/>';
+}
+
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice Animaux</title>
+</head>
+<body>
+    <?php echo elementsInCustomTags($elements); ?>
+</body>
+</html>
+
 <!-- 
     <p>Poissons</p>
     <p>Oiseaux</p>
