@@ -10,6 +10,7 @@ function minutesDepuisJanvier() {
 }
 
 echo "Nombre de minute depuis le 1er janvier : ".minutesDepuisJanvier();
+echo '<br/>';
 
 $timestamp = mktime(0, 0, 0, 8, 15, 2010);
 function minute($timestamp) {
@@ -17,6 +18,7 @@ function minute($timestamp) {
 }
 
 echo "Nombre de minute depuis le 15 aout 2010 : ".minute($timestamp);
+echo '<br/>';
 
 // function count($var) { ... }
 // strtolower('ok');
@@ -33,7 +35,55 @@ echo "Nombre de minute depuis le 15 aout 2010 : ".minute($timestamp);
  - '<a href="https://oviglo.fr">Lien vers ma page</a>
  - Appeler cette fonction dans le code html ci dessous
 */
+$longueur = 5;
+$largeur = 0;
+function getRectangleArea($longueur, $largeur) {
+    if ($largeur !== 0) {
+        return $longueur * $largeur;
+    } else {
+        return $longueur * $longueur;
+    }
+}
+echo "L'aire du rectangle que nous avons calculé est de : ".getRectangleArea($longueur, $largeur);
+echo '<br/>';
+
+function getUser() {
+    return [
+        'Prenom' => 'Mike',
+        'Nom' => 'Krimm',
+        'Email' => 'moi@cmoi.fr' 
+    ];
+}
+
+function getPrenom() {
+    $monInfo = getUser();
+    return $monInfo['Prenom'];
+}
+
+function getInfo($prenom, $nom, $email) {
+    getUser();
+    $prenom = getUser()['Prenom'];
+    $nom = getUser()['Nom'];
+    $email = getUser()['Email'];
+
+    if (false != strpos($prenom, 'Mike')) {
+        return true;
+    } elseif (false != strpos($nom, 'Krimm')) {
+        return true;
+    } elseif (false != strpos($email, 'moi@cmoi.fr')) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+function getUrl(string $nom, string $href) {
+    return '<a href="'.$href.'">'.$nom.'</a>';
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
