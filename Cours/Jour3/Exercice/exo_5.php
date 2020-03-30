@@ -25,12 +25,10 @@ Retourne vrai si $tags est dans un élément du tableau
 */
 $elements = ['poissons', 'oiseaux', 'dinosaures'];
 
-function elementsInCustomTags($elements): string {
+function elementsInCustomTags($elements) {
     foreach ($elements as $animals) {
-        return trim($animals);
-    }
- 
-    echo '<p>'.$animals.'</p><br/>';
+        echo '<p>'.$animals.'</p><br/>';
+    }  
 }
 
 ?>
@@ -44,7 +42,7 @@ function elementsInCustomTags($elements): string {
     <title>Exercice Animaux</title>
 </head>
 <body>
-    <?php echo elementsInCustomTags($elements); ?>
+    <?= elementsInCustomTags($elements); ?>
 </body>
 </html>
 

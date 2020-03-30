@@ -28,6 +28,8 @@ $articles = [
 ];
 // Source: jeuxvideo.com
 
+echo $articles[2]['title'];
+
 // ETAPE 1: analyser et comprendre le tableau php et le code html
 
 // ETAPE 2: explorer le tableau et afficher seulement les titres dans le tbody du tableau html
@@ -37,7 +39,6 @@ $articles = [
 
 // ETAPE 4: afficher le statut (public) de manière explicite => quand il est à false on affiche "Non publié", quand il est à true on affiche "Publié"
 // Utiliser la class badge de Bootstrap avec des couleurs, c'est plus sympas ;)
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +61,15 @@ $articles = [
             </thead>
             <tbody>
                 <!-- Liste des articles -->
+                <?php foreach($articles as $art): ?>
+                    <tr>
+                      
+                        <td><?= $art['title']; ?></td>
+                        <td><?= date_format(date_create($art['date']),'d/m/Y'); ?></td>
+                        <td><?= $art['public']? "Publié":"Non publié"; ?></td> 
+                       
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

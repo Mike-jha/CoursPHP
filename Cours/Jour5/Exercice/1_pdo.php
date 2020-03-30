@@ -49,15 +49,15 @@ $date = '2019-12-01';
 $content = 'Mon super article';
 
 // Demande a PDO de "preparer" une requete, PDO va retourner un objet PDOStatement
-$prep= $pdo->prepare("INSERT INTO article (title, date_create,content)
+$prep = $pdo->prepare("INSERT INTO article (title, date_create,content)
 value(?,?,?)");
 
 // Remplace les inconnues (?) par des variables PHP
 // Passer par bindValue permet a PDO de controler les valeurs
 // Permet aussi d'executer plusieurs fois la meme requete dans le script
-$prep->bindValue(1,$title);
-$prep->bindValue(2,$date);
-$prep->bindValue(3,$content);
+$prep->bindValue(1, $title);
+$prep->bindValue(2, $date);
+$prep->bindValue(3, $content);
 
 // Executer la requete
 // $prep->execute();
@@ -77,5 +77,5 @@ $articles = $request->fetchAll(PDO::FETCH_ASSOC); // PDO::FETCH_ASSOC permet d'a
 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 
-var_dump($articles);
 
+var_dump($articles);
