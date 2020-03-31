@@ -81,6 +81,28 @@ function editArticle($pdo, $id, $title, $content)
     $request->execute([':title' => $title, ':content' => $content, ':id' => $id]);
 }
 
-/*
-    Ajoute un article
-*/
+/**
+ * Ajoute un article 
+ */
+function addArticle($pdo, $title, $content)
+{
+    // INSERT INTO article (title, content, date_create) VALUES ('Titre test', 'Contenu test', CURRENT_DATE());
+
+    $request = $pdo->prepare('INSERT INTO article (title, content, date_create)
+    VALUES (:title, :content, CURRENT_DATE())');
+    $request->bindValue(':title', $title);
+    $request->bindValue(':content', $content);
+
+    return $request->execute();
+}
+
+/**
+ * Supprimer un article
+ */
+function deleteArticle($pdo, $id)
+{
+    $request = $pdo->prepare('DELETE article WHERE id=:id ');
+    $request->bindValue([':id', $id, PDO::PARAM_INT]);
+
+    return $request->execute();
+}

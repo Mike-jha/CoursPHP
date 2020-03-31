@@ -6,10 +6,8 @@ $errors = []; // Va contenir les erreurs de valaidation pour les afficher dans l
 
 $pdo = getPDO();
 // Si la variable get "id" n'existe pas
-if (!isset($_GET['id'])) {
-    // Nouvel article
-}
-$id = $_GET['id']; // Récupére l'id dans le lien "article_show.php?id=1"
+$id = $_GET['id'] ?? 0;
+
 $article = getArticle($pdo, $id); // Récupérer $_GET['id'] pour afficher l'article en fonction du lien
 
 // Test si la formulaire à bien été envoyé (donc s'il y a des données dans $_POST)
@@ -28,13 +26,16 @@ if (!empty($_POST)) {
 
     // Test s'il n'y a pas d'erreur
     if (empty($errors)) {
-        if (editArticle($pdo, $id, $_POST['title'], $_POST['content'])) {
+        if (0 == $id && addArticle($pdo, $id, $_POST['title'], $_POST['content'])) { // On ajoute
             header('Location: article_list.php');
         }
-
-        $errors['global'] = "Une erreur est survenue, votre article n'a pas pu être enregistré"
+    } elseif (editArticle($pdo, $id, $_POST['title'], $_POST['content'])) {
+        header('Location: article_list.php');
     }
+
+    $errors['global'] = "Une erreur est survenue, votre article n'a pas pu être enregistré";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +54,7 @@ if (!empty($_POST)) {
         <form action="" method="post">
             <?php if (isset($errors['global'])) : ?>
                 <div class="alert alert-danger">
-                <?= $errors['global']; ?>
+                    <?= $errors['global']; ?>
                 </div>
             <?php endif; ?>
             <div class="form-group">
