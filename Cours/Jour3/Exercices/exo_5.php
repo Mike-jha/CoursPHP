@@ -23,31 +23,38 @@ in_array($tags, ['p', 'div'])
 Retourne vrai si $tags est dans un élément du tableau
 
 */
-$elements = ['poissons', 'oiseaux', 'dinosaures'];
+function elementsIncustomTags(array $elements, string $tag = 'div')
+{
+    $html = '';
 
-function elementsInCustomTags($elements) {
-    foreach ($elements as $animals) {
-        echo '<p>'.$animals.'</p><br/>';
-    }  
+    if (!in_array($tag, ['p', 'div', 'section'])) { // Si $tag n'est pas dans le tableau
+        $tag = 'div';
+    }
+
+    foreach ($elements as $element) {
+        //$html .= '<'.$tag.'>'.$element.'</'.$tag.'>';
+        $html .= "<$tag>$element</$tag>";
+    }
+
+    return $html;
 }
 
+$elements = ['poissons', 'oiseaux', 'dinosaures'];
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Exercice Animaux</title>
-</head>
-<body>
-    <?= elementsInCustomTags($elements); ?>
-</body>
-</html>
-
 <!-- 
     <p>Poissons</p>
     <p>Oiseaux</p>
     ...
 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?=elementsIncustomTags($elements, 'undefined'); ?>
+    <!-- <?php echo elementsIncustomTags($elements, 'p'); ?> -->
+</body>
+</html>

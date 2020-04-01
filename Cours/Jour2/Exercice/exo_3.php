@@ -14,7 +14,7 @@ $articlesTypes = [
 /*
   1. En se basant sur le code HTML ci-dessous, afficher chaque titre d'article dans un élément #article-header
 
-  2. Dans chaque élément div.panel-body, générer un "texte de remplissage" de 50 mots. Exemple : "accordéon accordéon accordéon accordéon..."
+  2. Dans chaque élément article, générer un "texte de remplissage" de 50 mots. Exemple : "accordéon accordéon accordéon accordéon..."
  */
 ?>
 <html lang="fr">
@@ -40,21 +40,19 @@ $articlesTypes = [
     <body>
         <section id="articles">
             <h1>Articles</h1>
-            
-            <?php foreach ($articlesTypes as $titre) : ?>
+            <?php // for ($i = 0; $i < count($articlesTypes); $i++)?>
+            <?php foreach ($articlesTypes as $article): ?>
             <article>
                 <header>
-                    <h2><?php echo $titre; ?></h2>
+                    <h2><?= $article; ?></h2>
                 </header>
                 <?php for ($i = 0; $i < 50; ++$i) {
-                    echo 'accordéon ';
-                }
-                ?>
+    echo 'accordéon ';
+} ?>
             </article>
             <?php endforeach; ?>
             
         </section>
     </body>
 </html>
-
 

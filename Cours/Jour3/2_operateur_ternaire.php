@@ -13,10 +13,10 @@ if ($admin) {
 
 // Opérateur ternaire
 $message = ($admin) ? 'Vous êtes admin' : "Vous n'êtes pas admin";
-// Même résultat que la condition if mais en plus court 
+// Même résultat que la condition if mais plus court
 // (condition) ? alors : sinon
 
 $username = isset($_POST['username']) ? $_POST['username'] : null;
-// Si $_POST['username'] est définit alors on l'affecte dans $username sinon $username sera null
+// Si $_POST['username'] est définit alors on l'affecte dans $username sinon $username sera à null
 // l'opérateur coalescent
-$username = $_POST['username'] ?? null; // Fait la même chose que précedemment
+$username = $_POST['username'] ?? null; // Fait la même choses que précédent

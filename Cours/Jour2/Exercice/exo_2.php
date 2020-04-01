@@ -7,7 +7,6 @@
 
     3. Changer la couleur du texte à partir de la ligne 10
 */
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,23 +14,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exo 2</title>
-
     <style>
         .color {
-            background-color: lightgrey;
+            color: #951212;
         }
     </style>
-
 </head>
 <body>
     <table>
         <tbody>
-            <?php for ($l = 1; $l <= 20; ++$l) : ?> 
-                <tr>
-                    <td <?php if ($l >= 10) :?> class="color" <?php endif; ?> > 
-                        ligne <?php echo $l; ?> 
-                    </td>
-                </tr>
+            <?php for ($ligne = 1; $ligne <= 20; ++$ligne): ?>
+            <tr>
+                <!-- <?=$ligne; ?> affiche directement une variable (plutôt que d'écrire echo) -->
+            <td <?php if ($ligne >= 10): ?> class="color"<?php endif; ?>>Ligne <?=$ligne; ?></td>
+            </tr>
             <?php endfor; ?>
         </tbody>
     </table>

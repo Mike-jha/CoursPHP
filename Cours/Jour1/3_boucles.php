@@ -18,12 +18,13 @@ $commande = [
     'produit 4',
 ];
 
+// count($commande) retourne le nombre d'éléments dans le tableau
 for ($i = 0; $i < count($commande); ++$i) {
     echo $commande[$i].'<br/>';
 }
-
+echo '<hr>';
 // Foreach
-// Pour chaque élément du tableau
+// Pour chaque élements du tableaux
 foreach ($commande as $produit) {
     echo $produit.'<br/>';
 }
@@ -34,7 +35,7 @@ $commande = [
     'produit 3' => 'Livre',
     'produit 4' => 'Lego',
 ];
-// $key = index de lélément du tableau
+// $key = index de l'élément du tableau
 foreach ($commande as $key => $produit) {
     echo $key.':'.$produit.'<br/>';
 }
@@ -48,7 +49,7 @@ foreach ($commande as $key => $produit) {
     echo $key.':'.$produit.'<br/>';
 
     if ('produit 3' == $key) {
-        break;
+        break; // Arrête la boucle
     }
 }
 
@@ -58,7 +59,6 @@ foreach ($commande as $key => $produit) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>3 - Boucles</title>
 </head>
 <body>

@@ -7,4 +7,4 @@
     * model: Va contenir les scripts avec les requêtes SQL
     * page: Contient les pages de l'application
 
-Le fichier template.php va être chargé dans toutes les pages, il contient le code html commun (balises html, head, body) 
+Le fichier template.php va être chargé dans toutes les pages, il contient le code html commun (balises html, head, body)

@@ -1,13 +1,10 @@
 <?php
 
-session_start();
+session_start(); // Crée le tableau $_SESSION
 
-if (isset($_SESSION['name']) && true === $_SESSION['viewed']) {
-
-    echo 'Vous avez visité la page
-    create-session';
+// test si $_SESSION['viewed'] existe ET $_SESSION['viewed'] est vrai
+if (isset($_SESSION['viewed']) && true === $_SESSION['viewed']) {
+    echo 'Vous avez visité la page create-session';
 } else {
-
-    echo 'Vous n\'avez pas visité
-    la page create-session';
+    echo "Vous n'avez pas visité la page create-session";
 }

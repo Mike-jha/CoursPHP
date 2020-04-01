@@ -1,19 +1,21 @@
-<?php 
+<?php
 
 /*
-Tout comme en Js une fonction contient du code qui peut être appelé n'importe ou dans le code
+ Tout comme en Js une fonction contient du code qui peut être appelé n'importe où dans le code
 
-function maFonction($argument) {
-    Code inscrit dans la fonction
+ function maFonction($argument) {
+    // Code
 
-    return; // Non obligatoire
-}
+    return ; // Non obligatoire
+ }
 */
 
-/** 
- * Affiche la date du jour
-*/
-function echoDate() {
+// un commantaire qui commence par '/** */' permet de documenter la fonction
+/**
+ * Affiche la date du jour.
+ */
+function echoDate()
+{
     echo date('d/m/Y');
 }
 
@@ -21,16 +23,16 @@ function echoDate() {
 echoDate();
 
 /**
- * Salue un membre 
-*/
-function salutation($surname) {
+ * Salue un membre.
+ */
+function salutation($surname)
+{
     echo 'Bonjour '.$surname;
 }
-
 echo '<br/>';
-salutation("Albert");
+salutation('Albert');
 echo '<br/>';
-salutation("René");
+salutation('René');
 
 /*
 Si on ne met pas le bon nombre d'argument, PHP affiche une erreur
@@ -39,15 +41,16 @@ Fatal error: Uncaught ArgumentCountError: Too few arguments to function salutati
 // salutation();
 
 /**
- * Salue d'une certaine manière manière. 
-*/
-function salutationPrecise($name, $mode) {
+ * Salue d'une certaine manière.
+ */
+function salutationPrecise($name, $mode)
+{
     $message = '';
 
     if ('normal' == $mode) {
         $message = 'Bonjour';
     } elseif ('pirate' == $mode) {
-        $message = "Harrrr ol";
+        $message = "Hârrrr ol'";
     }
 
     echo $message.' '.$name;
@@ -60,7 +63,8 @@ salutationPrecise('Obélix', 'pirate');
 /*
 Rendre des arguments non obligatoire
 */
-function salutationPrecise2($name, $mode = 'normal') {
+function salutationPrecise2($name, $mode = 'normal')
+{
     // même code, il est possible d'appeler une fonction dans une autre
     salutationPrecise($name, $mode);
 }
@@ -70,14 +74,18 @@ echo '<br/>';
 salutationPrecise2('Jean');
 
 /*
-Les arguments facultatifs doivent être placés en dernier
-function maFonction($param1, $param2 = 0, $param3) {}
-maFonction("ok, , 100); // Je dois quand même renseigner le param2 pour définir le param3
+Les arguments facultatifs doivent êtres placés en dernier
+ function maFonction($param1, $param2 = 0, $param3) {}
+ maFonction("ok", , 100); // Je dois quand même renseigner le param2 pour définir param3
 */
 
-function estAdmin($roles) {
+/**
+ * Si l'utilisateur est admin.
+ */
+function estAdmin($roles)
+{
     // Si la position de la chaine 'ADMIN' ne retourne pas false
-    // strpos retourne la position de la chaine rechercher, si elle ne l'a trouve pas elle retourne false
+    // strpos retourne la position de la chaine rechercher, si elle ne la trouve pas elle retourne "false"
     return false != strpos($roles, 'ADMIN');
     /*
     if (false != strpos($roles, 'ADMIN')) {
@@ -90,10 +98,11 @@ function estAdmin($roles) {
 }
 
 echo '<br/>';
-echo estAdmin('USER,ADMIN')? 'Vous êtes admin' : 'Vous n\'avez pas les droits';
+echo estAdmin('USER,ADMIN') ? 'Vous êtes admin' : 'Vous n\'avez pas les droits';
 
 // une fonction peut retourner une valeur de n'importe quel type
-function getArray() {
+function getArray()
+{
     return [
         'val1' => 'Yes',
         'val2' => 'No',
@@ -101,9 +110,11 @@ function getArray() {
 }
 
 /*
-Il est possible de typer les paramètres (version 7 de PHP)
+Il est possible de typer les paramètres (version 7 de PHP )
+Et de type le retour
 */
-function connexion(string $username, string $password): bool {
+function connexion(string $username, string $password): bool
+{
     // Code
     return false;
 }

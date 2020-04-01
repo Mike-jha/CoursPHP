@@ -1,10 +1,11 @@
 <?php
 /*
-Il es possible de créer une valeur qui ne va jamais changer
+Il est possible de créer une valeur qui ne va jamais changer
 on déclare une constante en utilisant la fonction define('NOM', "valeur");
-Une constante ne commence pas par $
+Une constante ne commance pas par $
+Le nom doit être en majuscule et ne doit pas commencer par un chiffre
 */
-define('PI', 3,14159265359);
+define('PI', 3.14159265359);
 
 echo 2 * PI;
 

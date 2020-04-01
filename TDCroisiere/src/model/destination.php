@@ -1,13 +1,15 @@
 <?php
 
 /**
- * Retourne toutes les destinations 
+ * Retourne toutes les destinations.
  */
-function getAllDestination()
+function getAllDestinations()
 {
     global $pdo;
 
+    // SELECT * FROM destination ORDER BY name
+    // requête sans variable donc on utilise $pdo->query
     $request = $pdo->query('SELECT * FROM destination ORDER BY name');
 
-    return $request->fetchAll();
+    return $request->fetchAll(); // retourne tous les résultats
 }

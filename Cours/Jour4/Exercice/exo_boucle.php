@@ -1,97 +1,127 @@
 <?php
-// boucle affichant les 10 premiers nombres pairs
-$i = 2;
-while ($i <= 20) {
-    echo $i.'<br/>' ;
-    $i += 2;
-}
-echo '<br/>';
 
-// afficher une boucle avec les 10 premiers jours d'avril avec les fonction date et mktime
-for ($d = 1; $d <= 10; ++$d) {
-    $date = mktime(0,0,0,4,$d,2020);
-    echo date('d/m/Y', $date).'<br/>';
+// Afficher avec une boucle while les 10 premiers nombres pairs
+$nombre = 1;
+while ($nombre <= 10) {
+    echo $nombre.', ';
+    ++$nombre; // Augmente de 1
+    // $nombre = $nombre + 1;
+    // $nombre += 1;
 }
-echo '<br/>';
+
+// Nombres pairs
+echo '<br/>Nombres pairs<br/>';
+$nombre = 2;
+while ($nombre <= 20) {
+    echo $nombre.', ';
+    $nombre += 2;
+}
+
+// Afficher avec une boucle for les 10 premiers jours d'avril au format "d/m/Y" en utilisant les fonctions date et mktime
+/*
+01/04/2020, 02/04/2020 , ...
+mktime(0,0,0,4, $i ,2020);
+*/
+echo "<br/>Jours d'avril<br/>";
+for ($jour = 1; $jour <= 10; ++$jour) {
+    $time = mktime(0, 0, 0, 4, $jour);
+    echo date('d/m/Y', $time).', ';
+}
 
 // Afficher les éléments du tableau $jours avec une boucle for
+echo '<br/>Jours<br/>';
 $jours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-for ($i = 0; $i < count($jours); ++$i) {
-    echo $jours[$i].'<br/>';
+// $jours = [0 => 'Lundi', 1 => 'Mardi' ...]
+// echo $jours[2]; // Affiche l'élément avec l'index 2 donc "Mercredi"
+for ($j = 0; $j < count($jours); ++$j) {
+    echo $jours[$j].', ';
 }
-echo '<br/>';
 
-// faire la meme chose avec un foreach 
-foreach($jours as $day){
-    echo $day.'<br/>';
+// Faire la même chose avec un foreach
+foreach ($jours as $jour) {
+    echo $jour.', ';
 }
-echo '<br/>';
 
-// Faire une recherche dans $jours (avec foreach), quand la recherche est trouvé on affiche 'TROUVE' et on termine la boucle
-$recherche = 'Jeudi';
-foreach ($jours as $day) {
-    echo $day. ', ';
+foreach ($jours as $index => $jour) {
+    echo $index.' '.$jour.', ';
+}
 
-    if ($day == $recherche) {
-        echo 'TROUVE !';
+/*
+$user = [
+    'username' => 'Loic',
+    'password' => '123',
+];
+*/
+// Faire une recherche dans $jours (avec foreach), quand la recherche est trouvé on affiche "Trouvé !" et on TERMINE la boucle
+echo '<br/>Recherche<br/>';
+$recherche = 'Mardi';
+foreach ($jours as $jour) {
+    echo $jour.', ';
+
+    if ($jour == $recherche) {
+        echo 'Trouvé ! ';
         break;
     }
 }
-echo '<br/>';
 
 $articles = [
     [
         'title' => "Doom Eternal : Un lancement record pour la franchise d'après Bethesda",
-        'date' => "2020-03-25",
+        'date' => '2020-03-25',
         'public' => true,
     ],
     [
-        'title' => "The Council : le premier épisode est disponible gratuitement sur PC, PS4 et Xbox One",
-        'date' => "2020-03-25",
+        'title' => 'The Council : le premier épisode est disponible gratuitement sur PC, PS4 et Xbox One',
+        'date' => '2020-03-25',
         'public' => false,
     ],
     [
         'title' => "Assassin's Creed Odyssey gratuit ce week-end : retrouvez notre soluce complète",
-        'date' => "2020-03-20",
+        'date' => '2020-03-20',
         'public' => true,
     ],
     [
-        'title' => "Octopath Traveler célèbre ses deux millions de copies écoulées",
-        'date' => "2020-03-19",
+        'title' => 'Octopath Traveler célèbre ses deux millions de copies écoulées',
+        'date' => '2020-03-19',
         'public' => true,
     ],
     [
-        'title' => "Nintendo Direct Animal Crossing : Toutes les informations dévoilées sur New Horizons",
-        'date' => "2020-02-20",
+        'title' => 'Nintendo Direct Animal Crossing : Toutes les informations dévoilées sur New Horizons',
+        'date' => '2020-02-20',
         'public' => false,
     ],
 ];
 
-
-
-foreach ($articles as $art) {
-    // afficher les titres
-    // => echo $article['title'].'<br/>';
-    // Explorer les tableaux qui sont dns le tableau
-    foreach ($art as $key => $elem) {
-        echo $key .' : '.$elem.'<br>';
+// Explorer le tableau dans un foreach et afficher le titre
+// var_dump()
+/*$article = $articles[1];
+$article['title'];*/
+//$articles[1]['title'];
+echo '<hr>';
+foreach ($articles as $article) {
+    // var_dump($article);
+    // element "title" de $article
+    // echo $article['title'].'<br/>';
+    // Explorer article pour afficher tous les éléments (title, date, public)
+    foreach ($article as $index => $champ) {
+        echo $index.' : '.$champ.'<br/>';
     }
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Jours</title>
 </head>
 <body>
     <ul>
-        <?php foreach($jours as $day):?>
-        <li><?= $day; ?></li>
+        <!-- Jours de la semaine --> 
+        <!-- explorer la variable $jours pour mettre les éléments dans une balise li -->
+        <?php foreach ($jours as $jour): ?>
+        <li><?=$jour; ?></li>    
         <?php endforeach; ?>
     </ul>
 </body>

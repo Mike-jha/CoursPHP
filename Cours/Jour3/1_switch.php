@@ -1,30 +1,30 @@
 <?php
 
 /*
-Le switch permet d'éxecuter du code en fonction de la valeur d'une variable
+Le switch permet d'exécuter du code en fonction de la valeur d'une variable
 */
 
-$status = 2;
+$status = 1;
 // 1 = simple utilisateur, 2 = modérateur, 3 = admin
 
-switch ($status) { // en fonction de $status
+switch ($status) { // en fonction de $status ...
     case 1: // Quand $status = 1...
-        echo 'Vous êtes simple utilisateur';
-    break; // Quitte le switch, sinon éxecute les 'case' suivantes
+        echo 'Vous ête simple utilisateur';
+    break; // Quitte le switch, sinon exécute les 'case' suivantes
 
-    case 2: // Quand $status = 2...
-        echo 'Vous êtes modérateur';
+    case 2: // Quand $status = 2 ...
+        echo 'Vous ête modérateur';
     break;
 
-    case 3: 
-        echo 'Vous êtes admin!';
+    case 3:
+        echo 'Yeah ! vous ête admin !';
     break;
 
-    default: // si aucune 'case' correspond
-        echo 'On ne sait pas ce que vous êtes!';
+    default: // Si aucune 'case' correspond
+        echo 'On ne sais pas ce que vous êtes !';
 }
 
-// Autre exemple sans break
+// Autre exemple sans break;
 $roles = '';
 
 switch ($status) {
