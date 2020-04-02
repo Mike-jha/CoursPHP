@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title><?= $title ?></title>
+        <title><?= $title; ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
@@ -29,9 +29,13 @@
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="usermenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?= $_SESSION['user_username'] ?>
+                                <?= $_SESSION['user_username']; ?>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="usermenu">
+                                    <!-- menu admin -->
+                                    <?php if (isset($_SESSION['user_admin']) && 1 == $_SESSION['user_admin']):?>
+                                        <a href="?p=admin_accueil" class="dropdown-item"><i class="fas fa-cogs"></i> Administration</a>
+                                    <?php endif; ?>
                                     <a href="?p=deconnexion" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a>    
                                 </div>
                             </li>
@@ -42,10 +46,25 @@
             </nav>
         </header>
         <div class="container">
-        <?= $content ?>
+            <!-- Affichage des messages flash -->
+            <?php foreach (getFlashMessage() as $msg):
+                // Si le type est "error", ont le définis en "danger" (pour bootstrap)
+                $msg['type'] = (('error' == $msg['type']) ? 'danger' : $msg['type']);
+            ?>
+            <div class="alert alert-<?=$msg['type']; ?> alert-dismissible fade show">
+                <?=$msg['message']; ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php endforeach; ?>
+            <?= $content; ?>
         </div>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
-        <script></script>
+        <script src="assets/js/bs-custom-file-input.min.js"></script>
+        <script>$(document).ready(function () {
+            bsCustomFileInput.init()
+        })</script>
     </body>
 </html>

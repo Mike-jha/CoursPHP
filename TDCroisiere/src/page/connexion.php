@@ -19,7 +19,11 @@ if (!empty($_POST)) {
         $result = login($username, $password);
 
         if ('success' == $result['type']) {
+            // Génére un message qui sera affiché après la redirection
+            addFlashMessage('success', $result['message']);
+
             header('Location: index.php');
+            exit(); // Arrête le script
         }
 
         $errors['global'] = $result['message'];
@@ -29,20 +33,20 @@ if (!empty($_POST)) {
 ob_start();
 ?>
 <h1>Se connecter</h1>
-<!-- div.card.form-frame>div.card-body>(div.form-group>input:text[name="username"])+(div.form-group>input:email[name="email"])+(div.form-group>input:password[name="password"])+button:submit.btn.btn-primary.btn-block -->
+<!-- div.card.form-frame>div.card-body>(div.form-group>input:text[name="username"])+(div.form-group>input:email[name="email"])+(div.form-group>input:password[name="password"])+button:submit.btn.btn-primary.btn-block --> 
 <div class="card form-frame">
     <div class="card-body">
-
-        <?php if (isset($errors['global'])) : ?>
-            <div class="alert alert-danger"><?= $errors['global']; ?></div>
+        
+        <?php if (isset($errors['global'])): ?>
+        <div class="alert alert-danger"><?=$errors['global']; ?></div>
         <?php endif; ?>
 
         <form action="" method="post" novalidate>
             <div class="form-group">
-                <input class="form-control" placeholder="Nom d'utilisateur" type="text" name="username" value="<?= $username; ?>">
+                <input class="form-control" placeholder="Nom d'utilisateur" type="text" name="username" value="<?=$username; ?>">
             </div>
             <div class="form-group">
-                <input class="form-control" placeholder="Mot de passe" type="password" name="password" value="<?= $password; ?>">
+                <input class="form-control" placeholder="Mot de passe" type="password" name="password" value="<?=$password; ?>">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
         </form>

@@ -4,4 +4,4 @@
     <a href="index.php?p=admin_reservations" class="btn btn-light btn-lg"><i class="fas fa-2x fa-atlas"></i><br/>Réservations</a>
     <a href="index.php?p=admin_users" class="btn btn-light btn-lg"><i class="fas fa-2x fa-users"></i><br/>Utilisateurs</a>
 </div>
-<hr>
+<hr> 

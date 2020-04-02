@@ -33,7 +33,9 @@ if (!empty($_POST)) {
         $result = addUser($username, $email, $password); // Ajoute l'utilisateur
 
         if ('success' == $result['type']) { // L'utilisateur a bien été ajouté
+            addFlashMessage('success', $result['message']);
             header('Location: index.php');
+            exit();
         }
 
         $errors['global'] = $result['message'];
@@ -43,37 +45,37 @@ if (!empty($_POST)) {
 ob_start();
 ?>
 <h1>S'inscrire</h1>
-<!-- div.card.form-frame>div.card-body>(div.form-group>input:text[name="username"])+(div.form-group>input:email[name="email"])+(div.form-group>input:password[name="password"])+button:submit.btn.btn-primary.btn-block -->
+<!-- div.card.form-frame>div.card-body>(div.form-group>input:text[name="username"])+(div.form-group>input:email[name="email"])+(div.form-group>input:password[name="password"])+button:submit.btn.btn-primary.btn-block --> 
 <div class="card form-frame">
     <div class="card-body">
-
-        <?php if (isset($errors['global'])) : ?>
-            <div class="alert alert-danger"><?= $errors['global']; ?></div>
+        
+        <?php if (isset($errors['global'])): ?>
+        <div class="alert alert-danger"><?=$errors['global']; ?></div>
         <?php endif; ?>
 
         <form action="" method="post" novalidate>
             <div class="form-group">
-                <input class="form-control <?= isset($errors['username']) ? 'is-invalid' : ''; ?>" placeholder="Nom d'utilisateur" type="text" name="username" value="<?= $username; ?>">
-                <?php if (isset($errors['username'])) : ?>
-                    <div class="invalid-feedback">
-                        <?= $errors['username']; ?>
-                    </div>
+                <input class="form-control <?=isset($errors['username']) ? 'is-invalid' : ''; ?>" placeholder="Nom d'utilisateur" type="text" name="username" value="<?=$username; ?>">
+                <?php if (isset($errors['username'])): ?>
+                <div class="invalid-feedback">
+                    <?=$errors['username']; ?>
+                </div>
                 <?php endif; ?>
             </div>
             <div class="form-group">
-                <input class="form-control <?= isset($errors['email']) ? 'is-invalid' : ''; ?>" placeholder="Adresse email" type="email" name="email" value="<?= $email; ?>">
-                <?php if (isset($errors['email'])) : ?>
-                    <div class="invalid-feedback">
-                        <?= $errors['email']; ?>
-                    </div>
+                <input class="form-control <?=isset($errors['email']) ? 'is-invalid' : ''; ?>" placeholder="Adresse email" type="email" name="email" value="<?=$email; ?>">
+                <?php if (isset($errors['email'])): ?>
+                <div class="invalid-feedback">
+                    <?=$errors['email']; ?>
+                </div>
                 <?php endif; ?>
             </div>
             <div class="form-group">
-                <input class="form-control <?= isset($errors['password']) ? 'is-invalid' : ''; ?>" placeholder="Mot de passe" type="password" name="password" value="<?= $password; ?>">
-                <?php if (isset($errors['password'])) : ?>
-                    <div class="invalid-feedback">
-                        <?= $errors['password']; ?>
-                    </div>
+                <input class="form-control <?=isset($errors['password']) ? 'is-invalid' : ''; ?>" placeholder="Mot de passe" type="password" name="password" value="<?=$password; ?>">
+                <?php if (isset($errors['password'])): ?>
+                <div class="invalid-feedback">
+                    <?=$errors['password']; ?>
+                </div>
                 <?php endif; ?>
             </div>
             <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
