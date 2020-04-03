@@ -53,7 +53,7 @@ function saveDestination(string $name, string $description, array $photo = [], i
     if (UPLOAD_ERR_OK == $_FILES['photo']['error']) { // Il y a pas eu une erreur lors de l'envoi du fichier
         // Met le lien de la photo pour l'enregistrer dans la base de données
         // uniqid généré une chaine aléatoire
-        $photoUrl = 'uploads/'.uniqid().$_FILES['photo']['name'];
+        $photoUrl = 'uploads/' . uniqid() . $_FILES['photo']['name'];
     }
 
     global $pdo;

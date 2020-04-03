@@ -39,40 +39,43 @@ if (!empty($_POST)) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <title>Editer un article</title>
 </head>
+
 <body>
     <div class="container">
         <h1>Editer un article</h1>
         <!-- form:post>(div.form-group>label+input:text.form-control)+(div.form-group>label+textarea.form-control)+button:submit -->
         <form action="" method="post">
-            <?php if (isset($errors['global'])): ?>
-                <div class="alert alert-danger"><?=$errors['global']; ?></div>
+            <?php if (isset($errors['global'])) : ?>
+                <div class="alert alert-danger"><?= $errors['global']; ?></div>
             <?php endif; ?>
             <div class="form-group">
                 <label for="title">Titre</label>
-                <input type="text" name="title" id="title" class="form-control <?=isset($errors['title']) ? 'is-invalid' : ''; ?>" value="<?=$article['title']; ?>">
-                <?php if (isset($errors['title'])): ?>
-                <div class="invalid-feedback">
-                    <?=$errors['title']; ?>
-                </div>
+                <input type="text" name="title" id="title" class="form-control <?= isset($errors['title']) ? 'is-invalid' : ''; ?>" value="<?= $article['title']; ?>">
+                <?php if (isset($errors['title'])) : ?>
+                    <div class="invalid-feedback">
+                        <?= $errors['title']; ?>
+                    </div>
                 <?php endif; ?>
             </div>
             <div class="form-group">
                 <label for="content">Contenu</label>
-                <textarea name="content" id="content" cols="30" rows="10" class="form-control <?=isset($errors['content']) ? 'is-invalid' : ''; ?>"><?=$article['content']; ?></textarea>
-                <?php if (isset($errors['content'])): ?>
-                <div class="invalid-feedback">
-                    <?=$errors['content']; ?>
-                </div>
+                <textarea name="content" id="content" cols="30" rows="10" class="form-control <?= isset($errors['content']) ? 'is-invalid' : ''; ?>"><?= $article['content']; ?></textarea>
+                <?php if (isset($errors['content'])) : ?>
+                    <div class="invalid-feedback">
+                        <?= $errors['content']; ?>
+                    </div>
                 <?php endif; ?>
             </div>
             <button type="submit" class="btn btn-primary">Enregistrer</button>
         </form>
     </div>
 </body>
+
 </html>
