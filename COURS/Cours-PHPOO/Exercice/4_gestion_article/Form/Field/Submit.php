@@ -8,4 +8,10 @@ class Submit extends AbstractField
     {
         return '<button type="submit" name="' . $this->name . '" class="btn btn-primary">Enregistrer</button>';
     }
+
+    // Surcharge de la méthode createView définie à la base dans AbstractField
+    public function createView()
+    {
+        return $this->fieldView();
+    }
 }
