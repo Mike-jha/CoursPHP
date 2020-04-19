@@ -10,7 +10,7 @@ refreshButton.onclick = () => {
   xhttp.open("GET", "lastNews.php");
 
   // Fonction qui sera appelée lors d'un changement d'état de la requete
-  xhttp.onreadystatechange = function() {
+  xhttp.onreadystatechange = function () {
     console.log(this.readyState);
     // Test si le serveur a fini d'éecuter la requete ET s'il n'y a pas d'erreurs (status 200)
     if (this.readyState == 4 && this.status == 200) {
